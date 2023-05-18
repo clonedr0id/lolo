@@ -1,0 +1,25 @@
+{
+  "name": "lolo",
+  "version": "1.0.0",
+  "description": "LOLO is a discord bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kl0nee/lolo.git"
+  },
+  "keywords": [
+    "lolo",
+    "discord",
+    "bot",
+    "eris"
+  ],
+  "author": "kl0nee",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/kl0nee/lolo/issues"
+  },
+  "homepage": "https://github.com/kl0nee/lolo#readme"
+}
