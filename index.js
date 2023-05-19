@@ -1,1 +1,3 @@
-const Eris = require("eris")
+const LOLO = require("./lib/LOLO.js")
+
+LOLO.run();

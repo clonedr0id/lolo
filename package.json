@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/kl0nee/lolo/issues"
   },
-  "homepage": "https://github.com/kl0nee/lolo#readme"
+  "homepage": "https://github.com/kl0nee/lolo#readme",
+  "dependencies": {
+    "eris": "^0.17.2"
+  }
 }
