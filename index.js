@@ -1,3 +1,4 @@
-const LOLO = require("./lib/LOLO.js")
+const bot = require("./lib/LOLO.js");
+const LOLO = new bot;
 
-LOLO.run();
+LOLO.connect();
