@@ -1,6 +1,3 @@
-module.exports = {
-	name: "messageCreate",
-	run: async(message) =>{
-	console.log("lolo");
-  }
+module.exports = async(message) =>{
+	console.log("lolo mensaje");
 }
