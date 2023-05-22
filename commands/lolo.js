@@ -1,4 +1,9 @@
 module.exports = {
-	name: "lolo",
-	run: "lolo"
+  name: "lolo",
+  options: {
+    description: "hola"
+  },
+  run: async(i) => {
+    i.createMessage({ content: "tu madre" });
+  },
 };
