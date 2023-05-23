@@ -1,9 +1,9 @@
-module.exports = {
+module.exports.run = async(i) => {
+    console.log(i);
+  }
+
+module.exports.options = {
   name: "lolo",
-  options: {
-    description: "hola"
-  },
-  run: async(i) => {
-    i.createMessage({ content: "tu madre" });
-  },
-};
+  description: "hola",
+  type: 1,
+}
