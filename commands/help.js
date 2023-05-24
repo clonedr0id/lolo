@@ -1,22 +1,21 @@
+const LOLOEmbed = require("../utils/LOLOEmbed");
+
 module.exports.run = async(bot, i) => {
-        const embed = {
-      title: 'Título del Embed',
-      description: 'Descripción del Embed',
-      fields: [
-        { name: 'Campo 1', value: 'Valor 1' },
-        { name: 'Campo 2', value: 'Valor 2' },
-      ],
-      color: 0x00ff00, // Color en formato hexadecimal
-      footer: {
-        text: 'Pie de página',
-      },
-      timestamp: new Date(),
-    };
-    i.createMessage({ embed: [embed] })
+  const component = bot.components.get("help");
+    const embed = new LOLOEmbed()
+    .title("Título del Embed")
+    .desc("Descripción del Embed")
+    .field("Campo 1", "Valor 1")
+    .field("Campo 2", "Valor 2")
+    .field("hola", "adios")
+    .color(0x00ff00)
+    .footer("Pie de página")
+    .timestamp(new Date())
+    .get();
+    i.createMessage({ embeds: [embed] , component: [component] })
   }
 
 module.exports.options = {
   name: "help",
-  description: "esto despues lo configuro porque va a ser multilenguaje",
-  type: 1
+  type: 3
 }
