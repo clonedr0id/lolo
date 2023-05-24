@@ -16,8 +16,24 @@ lolo.on("ready", () => {
             }
      console.log("logged")
 });
-    lolo.on("interactionCreate", i =>{
-    console.log(i);
+    lolo.on("interactionCreate", async i =>{
+        try {
+       if(i.data.name) {
+        const Command = require("./commands/"+i.data.name)
+        await Command.run(lolo, i)
+        const Subcommand = require("./subcommands/"+i.data.options[0]);
+        await Subcommand.run(lolo, i, i.data.options[0]?.options);
+       } else if(i.data.options[0]?.name) {
+        const Subcommand = require("./subcommands/"+i.data.options[0]);
+        await Subcommand.run(lolo, i, i.data.options[0]?.options);
+       }
+   } catch (err) {
+    for(let cmdFile of fs.readdirSync("./commands/").filter(q => q.endsWith(".js"))) {
+        const File = require("./commands/"+cmdFile);
+        lolo.deleteCommand(File.options.name);
+    }
+    return i.createMessage({ content: "Error: `"+err+"`" });
+   }
 });
 
 lolo.connect();
