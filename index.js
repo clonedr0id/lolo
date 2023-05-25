@@ -18,6 +18,7 @@ lolo.on("ready", () => {
      });
 
     lolo.on("interactionCreate", async i =>{
+        try {
        if(i.data.name) {
         const Command = require("./commands/"+i.data.name)
         await Command.run(lolo, i)
@@ -25,6 +26,9 @@ lolo.on("ready", () => {
         const Subcommand = require("./subcommands/"+i.data.options[0]);
         await Subcommand.run(lolo, i, i.data.options[0]?.options);
        }
+   } catch(err) {
+    return console.error(err);
+   }
 });
 
 lolo.connect();

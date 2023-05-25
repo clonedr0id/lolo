@@ -1,6 +1,6 @@
 class Button {
 	constructor() {
-		this.components = {
+		this.components = [{
 		type: 1,
 		components: [{
 	type: 2,
@@ -8,10 +8,10 @@ class Button {
     style: null,
     custom_id: null
 		}]
-	}
+	}]
 	}
 	label(label) {
-    this.components.components[0].label = label;
+    this.components[0].components[0].label = label;
     return this;
 	}
 	style(style) {
@@ -27,21 +27,21 @@ class Button {
 	} else if(style == "link") {
     this._style = 5
 	}
-    this.components.components[0].style = this._style;
+    this.components[0].components[0].style = this._style;
     return this;
 	}
 	url(url) {
-    if(!this.components.components[0].style == 5) return this;
-    this.components.components[0].url = url;
+    if(!this.components[0].components[0].style == 5) return this;
+    this.components[0].components[0].url = url;
     return this;
 	}
 	custom_id(custom_id) {
-    if(this.components.components[0].style == 5) return this;
-    this.components.components[0].custom_id = custom_id;
+    if(this.components[0].components[0].style == 5) return this;
+    this.components[0].components[0].custom_id = custom_id;
     return this;
 	}
 	disabled(boolean) {
-	this.components.components[0].disabled = boolean;
+	this.components[0].components[0].disabled = boolean;
 	return this;
 	}
 	get() {
