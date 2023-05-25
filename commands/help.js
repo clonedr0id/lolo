@@ -2,10 +2,11 @@ const Embed = require("../structures/Embed");
 const Button = require("../structures/Button");
 
 module.exports.run = async(bot, i) => {
-  const components = new Button()
+  const button = new Button()
   .label("Hola")
-  .style(1)
+  .style("primary")
   .custom_id("boton")
+  .disabled(true)
   .get();
 
     const embed = new Embed()
@@ -18,7 +19,50 @@ module.exports.run = async(bot, i) => {
     .footer("Pie de página")
     .timestamp(new Date())
     .get();
-    i.createMessage({ embeds: [embed] , components: components })
+    i.createMessage({ embeds: [embed] , components: [
+        {
+            "type": 1,
+            "components": [
+                {
+                    "type": 3,
+                    "custom_id": "class_select_1",
+                    "options":[
+                        {
+                            "label": "Rogue",
+                            "value": "rogue",
+                            "description": "Sneak n stab",
+                            "emoji": {
+                                "name": "rogue",
+                                "id": "625891304148303894"
+                            }
+                        },
+                        {
+                            "label": "Mage",
+                            "value": "mage",
+                            "description": "Turn 'em into a sheep",
+                            "emoji": {
+                                "name": "mage",
+                                "id": "625891304081063986"
+                            }
+                        },
+                        {
+                            "label": "Priest",
+                            "value": "priest",
+                            "description": "You get heals when I'm done doing damage",
+                            "emoji": {
+                                "name": "priest",
+                                "id": "625891303795982337"
+                            }
+                        }
+                    ],
+                    "placeholder": "Choose a class",
+                    "min_values": 1,
+                    "max_values": 3
+                }
+            ]
+        }
+    ]
+  })
   }
 
 module.exports.options = {

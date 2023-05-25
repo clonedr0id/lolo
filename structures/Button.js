@@ -1,34 +1,51 @@
 class Button {
 	constructor() {
-		this.button = [];
-		this.object = [];
-		this.button.components = {}
-		this.button.components.type = 2;
-		this.button.type = 1;
+		this.components = {
+		type: 1,
+		components: [{
+	type: 2,
+    label: null,
+    style: null,
+    custom_id: null
+		}]
+	}
 	}
 	label(label) {
-    this.button.components.label = label;
+    this.components.components[0].label = label;
     return this;
 	}
 	style(style) {
-    this.button.components.style = style;
+	this._style;
+	if(style == "primary") {
+    this._style = 1
+	} else if(style == "secondary") {
+    this._style = 2
+	} else if(style == "success") {
+    this._style = 3
+	} else if(style == "danger") {
+    this._style = 4
+	} else if(style == "link") {
+    this._style = 5
+	}
+    this.components.components[0].style = this._style;
     return this;
 	}
 	url(url) {
-    if(!url) return this;
-    this.button.components.url = url;
+    if(!this.components.components[0].style == 5) return this;
+    this.components.components[0].url = url;
     return this;
 	}
 	custom_id(custom_id) {
-    this.button.components.custom_id = custom_id;
+    if(this.components.components[0].style == 5) return this;
+    this.components.components[0].custom_id = custom_id;
     return this;
 	}
+	disabled(boolean) {
+	this.components.components[0].disabled = boolean;
+	return this;
+	}
 	get() {
-	this.button = [{
-    type: 1,
-    components: [this.button.components]
-	}]
-	return this.button;
+	return this;
 	}
 }
 
