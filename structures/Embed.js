@@ -1,4 +1,4 @@
-class LOLOEmbed {
+class Embed {
   constructor() {
   	this.embed = {};
   	this.embed.fields = [];
@@ -42,4 +42,4 @@ class LOLOEmbed {
   }
 }
 
-module.exports = LOLOEmbed
+module.exports = Embed

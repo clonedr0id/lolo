@@ -1,25 +1,14 @@
-const LOLOEmbed = require("../utils/LOLOEmbed");
+const Embed = require("../structures/Embed");
+const Button = require("../structures/Button");
 
 module.exports.run = async(bot, i) => {
-  const components = [{
-    components: [{
-      type: 1,
-      components: [{
-        type: 3,
-        custom_id: "menu",
-        options: [{
-          label: "NYA",
-          value: "nya"
-        },{
-          label: "KYA",
-          value: "kya"
-        }]
-      }],
-      placeholder: "yomama is so fat",
-      min_values: 1
-    }]
-  }]
-    const embed = new LOLOEmbed()
+  const components = new Button()
+  .label("Hola")
+  .style(1)
+  .custom_id("boton")
+  .get();
+
+    const embed = new Embed()
     .title("Título del Embed")
     .desc("Descripción del Embed")
     .field("Campo 1", "Valor 1")
