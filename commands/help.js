@@ -1,10 +1,11 @@
 const Embed = require("../structures/Embed");
-const SelectMenu = require("../structures/SelectMenu");
+const Button = require("../structures/Button");
 
-module.exports.run = async(bot, i) => {
-  const menu = new SelectMenu()
-  .placeholder("clickea aca puto")
-  .item("porque clickeaste", "why_click", "puto el que clickea")
+module.exports.run = async(bot, i, args) => {
+  const boton = new Button()
+  .label("hola")
+  .style("primary")
+  .disabled(false)
   .custom_id("lolo")
   .get();
 
@@ -18,11 +19,19 @@ module.exports.run = async(bot, i) => {
     .footer("Pie de página")
     .timestamp(new Date())
     .get();
-    i.createMessage({ embeds: [embed] , components: menu })
+    i.createMessage({ embeds: [embed] , components: boton })
   }
 
 module.exports.options = {
   name: "help",
   description: "aña",
-  type: 1
+  type: 1,
+  options: [{
+      name: "cmd",
+      type: 1,
+      description: "cmd"
+ }],
+  components: [
+  "lolo"
+  ]
 }

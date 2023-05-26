@@ -10,6 +10,18 @@ class SelectMenu {
 		}]
 		this;
 	}
+	select(select) {
+    if(select == "user") {
+    this.components[0].type = 5
+    return this;
+    } else if(select == "role") {
+    this.components[0].type = 6
+    return this;
+    } else if(select == "channel") {
+    this.components[0].type = 8
+    return this;
+    }
+	}
 	item(label, value, desc, emoji) {
 	if(emoji) {
     this.components[0].components[0].options.push({
