@@ -1,7 +1,7 @@
 const Embed = require("../structures/Embed");
 const Button = require("../structures/Button");
 
-module.exports.run = async(bot, i, args) => {
+module.exports.run = async(bot, i, data) => {
   const boton = new Button()
   .label("hola")
   .style("primary")
@@ -30,8 +30,5 @@ module.exports.options = {
       name: "cmd",
       type: 1,
       description: "cmd"
- }],
-  components: [
-  "lolo"
-  ]
+ }]
 }
