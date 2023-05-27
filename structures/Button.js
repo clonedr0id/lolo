@@ -45,7 +45,7 @@ class Button {
 	return this;
 	}
 	get() {
-	return this.components;
+	return this.components[0];
 	}
 }
 

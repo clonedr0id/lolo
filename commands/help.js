@@ -1,13 +1,16 @@
 const Embed = require("../structures/Embed");
 const Button = require("../structures/Button");
+const Eris = require("eris");
 
 module.exports.run = async(bot, i, data) => {
-  const boton = new Button()
-  .label("hola")
-  .style("primary")
+  const github_b = new Button()
+  .label("LOLO's Source Code")
+  .style("link")
+  .url("https://github.com/elclonazepam/lolo")
   .disabled(false)
-  .custom_id("lolo")
+  .custom_id("github")
   .get();
+  console.log(i);
 
     const embed = new Embed()
     .title("Título del Embed")
@@ -19,16 +22,11 @@ module.exports.run = async(bot, i, data) => {
     .footer("Pie de página")
     .timestamp(new Date())
     .get();
-    i.createMessage({ embeds: [embed] , components: boton })
+   i.createMessage({ embeds: [embed] , components: [github_b] })
   }
 
 module.exports.options = {
   name: "help",
-  description: "aña",
-  type: 1,
-  options: [{
-      name: "cmd",
-      type: 1,
-      description: "cmd"
- }]
+  description: "Shows the list of commands.",
+  type: 1
 }
