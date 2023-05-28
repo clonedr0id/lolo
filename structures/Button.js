@@ -5,8 +5,7 @@ class Button {
 		components: [{
 	type: 2,
     label: null,
-    style: null,
-    custom_id: null
+    style: null
 		}]
 	}]
 	}

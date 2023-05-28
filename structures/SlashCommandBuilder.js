@@ -82,6 +82,16 @@ class CommandBuilder {
     }]
     return this;
 	}
+    group(option) {
+    if(!this.command.options === []) return;
+    this.command.options = [option];
+    return this;
+    }
+    subCommand(option) {
+    if(!this.command.options === []) return;
+    this.command.options = [option];
+    return this;
+    }
 	choices(name, value) {
 	this.command.options[0].choices = []
 	this.command.options[0].choices.push({ name: name, value: value });
@@ -97,8 +107,7 @@ class SubCommandGroupBuilder {
     this.command = {}
 	this.command.name = null
 	this.command.description = null
-	this.command.type = 2
-    this.command.category = "unknown"
+    this.command.type = 2
 	this.command.options = []
 }
 	name(name) {
@@ -109,10 +118,6 @@ class SubCommandGroupBuilder {
     this.command.description = desc;
     return this;
 	}
-    category(category) {
-    this.command.category = category;
-    return this;
-    }
 	subCommand(name, desc) {
 	this.command.options.push({
 	name: name,

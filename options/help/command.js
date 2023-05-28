@@ -7,6 +7,7 @@ module.exports.run = async(bot, i, data) =>{
   .title(`${command.options.name} information.`)
   .field("Description:", command.options.description)
   .field("Category:", command.options.category)
+  .color(bot.color)
   .get();
   return i.createMessage({ embeds: [embed] });
 }

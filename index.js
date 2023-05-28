@@ -5,6 +5,7 @@ const lolo = new Eris("Bot "+token, {
 		intents: ["guildMessages", "guildMembers"],
         maxShards: "auto"
 });
+        lolo.color = 0x00ff00
         lolo.commands = new Eris.Collection();
         lolo.components = new Eris.Collection();
 
@@ -21,19 +22,27 @@ lolo.on("ready", () => {
     lolo.on("interactionCreate", async i =>{
         try {
        if(i.member.user.bot) return;
+       // Checks if the interaction is a command of LOLO
        if(i.data.name) {
         if(!i.data.options) {
         const Command = require("./commands/"+i.data.name);
         await Command.run(lolo, i, i.data);
     }
+      // Checks if it's an option and executes the option file
         if(i.data.options && i.data.options[0].value) {
         const Option = require("./options/"+i.data.name+"/"+i.data.options[0].name)
         await Option.run(lolo, i, i.data.options[0])
     }
+      // Checks if it's a subcommand and executes the subcommand file
        }
        if(i.data.options && i.data.options[0].type === 1 && i.data.options[0].name) {
-        const Subcommand = require("./subcommands/"+i.data.options[0].name);
+        const Subcommand = require("./subcommands/"+i.data.name+"/"+i.data.options[0].name);
         await Subcommand.run(lolo, i, i.data.options[0]);
+       }
+       // Checks if it's a subcommand group and executes the subcommand group file
+       if(i.data.options && i.data.options[0].type === 2 && i.data.options[0].options[0].name) {
+        const SubcommandGroup = require("./subcommandsgroups/"+i.data.name+"/"+i.data.options[0].options[0].name);
+        await SubcommandGroup.run(lolo, i, i.data.options[0].options[0]);
        }
    } catch(err) {
     console.error(err);
