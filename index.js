@@ -21,9 +21,6 @@ lolo.on("ready", () => {
     lolo.on("interactionCreate", async i =>{
         try {
        if(i.member.user.bot) return;
-       if(!lolo.getCommand(i.id) === lolo.commands.get(i.data.name)) {
-        lolo.deleteCommand(i.id);
-       }
        if(i.data.name) {
         if(!i.data.options) {
         const Command = require("./commands/"+i.data.name);
