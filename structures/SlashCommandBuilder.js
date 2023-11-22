@@ -83,12 +83,10 @@ class CommandBuilder {
     return this;
 	}
     group(option) {
-    if(!this.command.options === []) return;
     this.command.options = [option];
     return this;
     }
     subCommand(option) {
-    if(!this.command.options === []) return;
     this.command.options = [option];
     return this;
     }

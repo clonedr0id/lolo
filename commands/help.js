@@ -8,7 +8,7 @@ module.exports.run = async(bot, i, data) => {
   const github_b = new Button()
   .label("LOLO's Source Code")
   .style("link")
-  .url("https://github.com/elclonazepam/lolo")
+  .url("https://github.com/clonedr0id/lolo")
   .disabled(false)
   .custom_id("github")
   .get();
