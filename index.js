@@ -30,9 +30,14 @@ lolo.on("ready", () => {
     }
       // Checks if it's an option and executes the option file
         if(i.data.options && i.data.options[0].value) {
-        const Option = require("./options/"+i.data.name+"/"+i.data.options[0].name)
+        const Option = require("./options/"+i.data.name+"/"+i.data.options[0].name);
         await Option.run(lolo, i, i.data.options[0])
     }
+      if(i.data.options && i.data.component_type === 2 && i.data.custom_id) {
+        const Button = require("./components/buttons/"+i.data.name+"/"+i.data.custom_id);
+        await Button.run(lolo, i, i.m)
+      }
+      console.log(i);
       // Checks if it's a subcommand and executes the subcommand file
        }
        if(i.data.options && i.data.options[0].type === 1 && i.data.options[0].name) {
@@ -45,8 +50,7 @@ lolo.on("ready", () => {
         await SubcommandGroup.run(lolo, i, i.data.options[0].options[0]);
        }
    } catch(err) {
-    console.error(err);
-    return i.createMessage({ content: "error culo: ```js\n"+err+"```" });
+    return console.error(err);
    }
 });
 

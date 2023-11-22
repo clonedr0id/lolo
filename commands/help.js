@@ -18,7 +18,6 @@ module.exports.run = async(bot, i, data) => {
   .disabled(false)
   .custom_id("command_lista")
   .get();
-  console.log(data)
     const embed = new Embed()
     .title("Título del Embed")
     .desc("Descripción del Embed")
@@ -29,7 +28,7 @@ module.exports.run = async(bot, i, data) => {
     .footer("Pie de página")
     .timestamp(new Date())
     .get();
-   i.createMessage({ embeds: [embed] , components: [github_b, command_list] })
+   await i.createMessage({ embeds: [embed] , components: [github_b, command_list] })
   }
 
 module.exports.options = new CommandBuilder()
