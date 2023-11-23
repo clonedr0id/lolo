@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kl0nee/lolo.git"
+    "url": "git+https://github.com/clonedr0id/lolo.git"
   },
   "keywords": [
     "lolo",
@@ -19,9 +19,9 @@
   "author": "kl0nee",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/kl0nee/lolo/issues"
+    "url": "https://github.com/clonedr0id/lolo/issues"
   },
-  "homepage": "https://github.com/kl0nee/lolo#readme",
+  "homepage": "https://github.com/clonedr0id/lolo#readme",
   "dependencies": {
     "eris": "^0.17.2"
   }

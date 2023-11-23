@@ -4,7 +4,8 @@ class CommandBuilder {
 	this.command.name = null
 	this.command.description = null
 	this.command.type = 1
-    this.command.category = "unknown"
+        this.command.category = "unknown"
+	this.command.usage = ""
 	this.command.options = []
 }
 	name(name) {
@@ -105,7 +106,8 @@ class SubCommandGroupBuilder {
     this.command = {}
 	this.command.name = null
 	this.command.description = null
-    this.command.type = 2
+        this.command.type = 2
+	this.command.usage = ""
 	this.command.options = []
 }
 	name(name) {
@@ -135,7 +137,8 @@ class SubCommandBuilder {
 	this.command.name = null
 	this.command.description = null
 	this.command.type = 1
-    this.command.category = "unknown"
+        this.command.category = "unknown"
+	this.command.usage = ""
 	this.command.options = []
 }
 	name(name) {

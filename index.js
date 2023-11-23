@@ -12,7 +12,7 @@ const lolo = new Eris("Bot "+token, {
         // Events
 lolo.on("ready", () => {
     	for(let cmdFile of fs.readdirSync("./commands/").filter(q => q.endsWith(".js"))) {
-          const File = require("./commands/"+cmdFile);
+          const File = require("./commands/"+cmdFile+"index.js");
             lolo.commands.set(File.options.name, File);
              lolo.createCommand(File.options)
             }
@@ -22,29 +22,24 @@ lolo.on("ready", () => {
     lolo.on("interactionCreate", async i =>{
         try {
        if(i.member.user.bot) return;
-       // Checks if the interaction is a command of LOLO
        if(i.data.name) {
         if(!i.data.options) {
-        const Command = require("./commands/"+i.data.name);
+        const Command = require("./commands/"+i.data.name+"/index.js");
         await Command.run(lolo, i, i.data);
     }
-      // Checks if it's an option and executes the option file
         if(i.data.options && i.data.options[0].value) {
-        const Option = require("./options/"+i.data.name+"/"+i.data.options[0].name);
-        await Option.run(lolo, i, i.data.options[0])
+	const Args = require("./commands/"+i.data.name+"/args/"+i.data.options[0].name);
+        await Args.run(lolo, i, i.data.options[0])
     }
       if(i.data.options && i.data.component_type === 2 && i.data.custom_id) {
-        const Button = require("./components/buttons/"+i.data.name+"/"+i.data.custom_id);
+        const Button = require("./commands/buttons/"+i.data.name+"/"+i.data.custom_id);
         await Button.run(lolo, i, i.m)
       }
-      console.log(i);
-      // Checks if it's a subcommand and executes the subcommand file
        }
        if(i.data.options && i.data.options[0].type === 1 && i.data.options[0].name) {
         const Subcommand = require("./subcommands/"+i.data.name+"/"+i.data.options[0].name);
         await Subcommand.run(lolo, i, i.data.options[0]);
        }
-       // Checks if it's a subcommand group and executes the subcommand group file
        if(i.data.options && i.data.options[0].type === 2 && i.data.options[0].options[0].name) {
         const SubcommandGroup = require("./subcommandsgroups/"+i.data.name+"/"+i.data.options[0].options[0].name);
         await SubcommandGroup.run(lolo, i, i.data.options[0].options[0]);
