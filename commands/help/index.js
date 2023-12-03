@@ -1,8 +1,8 @@
-const Embed = require("../structures/Embed");
-const Button = require("../structures/Button");
+const Embed = require("../../structures/Embed");
+const Button = require("../../structures/Button");
 const {
   CommandBuilder
-} = require("../structures/SlashCommandBuilder");
+} = require("../../structures/SlashCommandBuilder");
 
 module.exports.run = async(bot, i, data) => {
   const github_b = new Button()
@@ -12,11 +12,11 @@ module.exports.run = async(bot, i, data) => {
   .disabled(false)
   .custom_id("github")
   .get();
-  const command_list = new Button()
+  const commands = new Button()
   .label("See the list of commands")
   .style("primary")
   .disabled(false)
-  .custom_id("command_lista")
+  .custom_id("commands")
   .get();
     const embed = new Embed()
     .title("Título del Embed")
@@ -28,7 +28,7 @@ module.exports.run = async(bot, i, data) => {
     .footer("Pie de página")
     .timestamp(new Date())
     .get();
-   await i.createMessage({ embeds: [embed] , components: [github_b, command_list] })
+   await i.createMessage({ embeds: [embed] , components: [github_b, commands] })
   }
 
 module.exports.options = new CommandBuilder()
