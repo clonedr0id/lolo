@@ -12,7 +12,7 @@ const lolo = new Eris("Bot "+token, {
         // Events
 lolo.on("ready", () => {
     	for(let cmdFile of fs.readdirSync("./commands/").filter(q => q.endsWith(".js"))) {
-          const File = require("./commands/"+cmdFile+"index.js");
+          const File = require("./commands/"+cmdFile+"/index.js");
             lolo.commands.set(File.options.name, File);
              lolo.createCommand(File.options)
             }
